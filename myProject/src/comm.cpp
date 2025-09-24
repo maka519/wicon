@@ -38,9 +38,6 @@ char* RxLoRa() {
   uint8_t data;
   unsigned long tmpt;
 
-  //display.setCursor(10, 50);
-  //display.printf("Check LoRa");
-  
   rcv_type = -1;
   recdata = NULL; //データ受信したらデータの先頭ポインタが入る
   if(Serial2.available() != 0){

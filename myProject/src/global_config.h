@@ -21,7 +21,11 @@
 #define txSOS_page    3   //SOS送信ページ
 #define rxm_page   4   //受信メッセージ表示ページ
 #define txm_page    5   //メッセージ送信ページ
-
+#define axm_page    6   //体調メッセージ表示ページ
+#define bxm_page    7   //会話メッセージ表示ページ
+#define cxm_page    8   //入浴メッセージ表示ページ
+#define dxm_page    9   //仕事メッセージ表示ページ
+#define exm_page    10   //その他メッセージ表示ページ
 
 //＊＊＊＊構造体定義＊＊＊＊
 //受信メッセージバッファ
@@ -77,8 +81,51 @@ extern LGFX_Button sos_cancel_btn;
 extern LGFX_Button sos_done_btn;
 
 //txm_page.cpp
+extern LGFX_Button txa;
+extern LGFX_Button txb;
+extern LGFX_Button txc;
+extern LGFX_Button txd;
+extern LGFX_Button txe;
 extern LGFX_Button txexec_btn;
 extern LGFX_Button txcancel_btn;
+
+//axm_page.cpp
+extern LGFX_Button axa;
+extern LGFX_Button axb;
+extern LGFX_Button axc;
+extern LGFX_Button axexec_btn;
+extern LGFX_Button axcancel_btn;
+
+//bxm_page.cpp
+extern LGFX_Button bxa;
+extern LGFX_Button bxb;
+extern LGFX_Button bxc;
+extern LGFX_Button bxexec_btn;
+extern LGFX_Button bxcancel_btn;
+
+//cxm_page.cpp
+extern LGFX_Button cxa;
+//extern LGFX_Button cxb;
+//extern LGFX_Button cxc;
+extern LGFX_Button cxexec_btn;
+extern LGFX_Button cxcancel_btn;
+
+//dxm_page.cpp
+extern LGFX_Button dxa;
+extern LGFX_Button dxb;
+extern LGFX_Button dxc;
+extern LGFX_Button dxd;
+extern LGFX_Button dxexec_btn;
+extern LGFX_Button dxcancel_btn;
+
+//exm_page.cpp
+extern LGFX_Button exa;
+extern LGFX_Button exb;
+extern LGFX_Button exc;
+extern LGFX_Button exd;
+extern LGFX_Button exe;
+extern LGFX_Button exexec_btn;
+extern LGFX_Button excancel_btn;
 
 //rxm_page.cpp
 extern LGFX_Button rxrep_btn;
@@ -138,3 +185,23 @@ extern int getUnreadMesNum();
 //txm_page.cpp
 extern void DrawTxmScreen();
 extern void DrawTxmScreen2();
+
+//axm_page.cpp
+extern void DrawAxmScreen();
+extern void DrawAxmScreen2();
+
+//bxm_page.cpp
+extern void DrawBxmScreen();
+extern void DrawBxmScreen2();
+
+//cxm_page.cpp
+extern void DrawCxmScreen();
+extern void DrawCxmScreen2();
+
+//dxm_page.cpp
+extern void DrawDxmScreen();
+extern void DrawDxmScreen2();
+
+//exm_page.cpp
+extern void DrawExmScreen();
+extern void DrawExmScreen2();

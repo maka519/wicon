@@ -35,6 +35,7 @@ void InitScreen() {
     delay(1000);
     Disw = display.width();
     Dish = display.height();
+
     //各ページのボタン初期化
     //ヘッダー
     sos_btn.initButton(&display, 5+Disw/4, 50, Disw/2, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "SOS", 2, 2);
@@ -46,9 +47,52 @@ void InitScreen() {
     sos_cancel_btn.initButton(&display, 5+Disw/4, 400, Disw/3, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "間違い", 2, 2);
     sos_done_btn.initButton(&display, Disw-(5+Disw/4), 400, Disw/3, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "発信終", 2, 2);
 
-    //メッセージ送信ページ
-    txcancel_btn.initButton(&display, Disw/4, 700, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
-    txexec_btn.initButton(&display, Disw-(Disw/4), 700, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+    //内容ページ
+    txa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "体調", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    txb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "会話", 2, 2);
+    txc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "入浴", 2, 2);
+    txd.initButton(&display, Disw/2, 550, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "仕事", 2, 2);
+    txe.initButton(&display, Disw/2, 650, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "その他", 2, 2);
+    txcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    txexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+
+    //体調ページ
+    axa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "体調が悪い", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    axb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "体が痛い", 2, 2);
+    axc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "助けてほしい", 2, 2);
+    axcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    axexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+
+    //会話ページ
+    bxa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "元気ですか", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    bxb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "一緒に通院したい", 2, 2);
+    bxc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "買い物に行きたい", 2, 2);
+    bxcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    bxexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+
+    //入浴ページ
+    cxa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "お風呂に入ります", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    //cxb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "会話", 2, 2);
+    //cxc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "入浴", 2, 2);
+    cxcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    cxexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+
+    //仕事ページ
+    dxa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "楽しい", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    dxb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "つらい", 2, 2);
+    dxc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "相談したい", 2, 2);
+    dxd.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "悩みがある", 2, 2);
+    dxcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    dxexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
+
+    //その他ページ
+    exa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "なくしもの", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    exb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "ひま", 2, 2);
+    exc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "病院に行きたい", 2, 2);
+    exd.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "買い物に行きたい", 2, 2);
+    exe.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "助けてほしい", 2, 2);
+    excancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+    exexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
 
     //受信メッセージ表示ページ
     rxcancel_btn.initButton(&display, Disw/4, 900, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);

@@ -42,6 +42,11 @@ void loop() {
       case txSOS_page:  DrawTxSOSScreen();  break;
       case rxm_page: DrawRxmScreen(); break;
       case txm_page: DrawTxmScreen(); break;
+      case axm_page: DrawAxmScreen(); break;
+      case bxm_page: DrawBxmScreen(); break;
+      case cxm_page: DrawCxmScreen(); break;
+      case dxm_page: DrawDxmScreen(); break;
+      case exm_page: DrawExmScreen(); break;
 
     }
     OldPage = Page;
@@ -54,6 +59,11 @@ void loop() {
       case txSOS_page:  DrawTxSOSScreen2();  break;
       case rxm_page: DrawRxmScreen2(); break;
       case txm_page: DrawTxmScreen2(); break;
+      case axm_page: DrawAxmScreen2(); break;
+      case bxm_page: DrawBxmScreen2(); break;
+      case cxm_page: DrawCxmScreen2(); break;
+      case dxm_page: DrawDxmScreen2(); break;
+      case exm_page: DrawExmScreen2(); break;
 
     }  
 

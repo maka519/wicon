@@ -1,38 +1,34 @@
-//メッセージ送信ページ
+//内容ページ
 #include <M5Unified.h>
 #include <Arduino.h>
 #include <M5GFX.h>
 
 #include "global_config.h"
 
-LGFX_Button txexec_btn;
-LGFX_Button txcancel_btn;
+LGFX_Button txa;//体調
+LGFX_Button txb;//会話
+LGFX_Button txc;//入浴
+LGFX_Button txd;//仕事
+LGFX_Button txe;//その他
+LGFX_Button txexec_btn;//送る
+LGFX_Button txcancel_btn;//戻る
 
 int tx_prebtn = -1;
 
-//メッセージ送信ページ描画
+//内容ページ描画
 void DrawTxmScreen() {
-    //ページ初期化
-
-    //ページレイアウト
-    //フレーム描画1
-    //送信設定
-    display.fillRect(3,200,Disw-6,400,TFT_BLACK);
-    delay(300);
-    //フレーム描画2
-    //送信設定
-    display.fillRect(5,202,Disw-6,395,TFT_WHITE);
-    delay(300);
-
     //テキスト    
     display.setCursor(3, 150);
-    display.print("メッセージ送信");
-    display.setCursor(5, 202);
-    display.println("TODO: ここに送信処理を表示する");
-
+    display.print("内容");
+    
     //ボタン
-    txcancel_btn.drawButton();
-    txexec_btn.drawButton();
+    txa.drawButton();//体調
+    txb.drawButton();//会話
+    txc.drawButton();//入浴
+    txd.drawButton();//仕事
+    txe.drawButton();//その他
+    txcancel_btn.drawButton();//戻る
+    txexec_btn.drawButton();//送る
 
     //変数初期化
     tx_prebtn = -1;
@@ -57,6 +53,31 @@ void DrawTxmScreen2() {
             if(tx_prebtn != 2) txexec_btn.drawButton(true);
             tx_prebtn = 2;
         }
+        else if(txa.contains(touchPoint.x, touchPoint.y)){
+            //体調ボタン押した
+            if(tx_prebtn != 3) txa.drawButton(true);
+            tx_prebtn = 3;
+        }
+        else if(txb.contains(touchPoint.x, touchPoint.y)){
+            //会話ボタン押した
+            if(tx_prebtn != 4) txb.drawButton(true);
+            tx_prebtn = 4;
+        }
+         else if(txc.contains(touchPoint.x, touchPoint.y)){
+            //入浴ボタン押した
+            if(tx_prebtn != 5) txc.drawButton(true);
+            tx_prebtn = 5;
+        }
+        else if(txd.contains(touchPoint.x, touchPoint.y)){
+            //仕事ボタン押した
+            if(tx_prebtn != 6) txd.drawButton(true);
+            tx_prebtn = 6;
+        }  
+        else if(txe.contains(touchPoint.x, touchPoint.y)){
+            //その他ボタン押した
+            if(tx_prebtn != 7) txe.drawButton(true);
+            tx_prebtn = 7;
+        }   
     } else {
         //ボタン押してない
         if(tx_prebtn == 1){
@@ -69,7 +90,83 @@ void DrawTxmScreen2() {
             //トップページへ
             ClearScreen();
             Page = top_page;
+        } else if(tx_prebtn == 3){
+            //体調ページへ
+            ClearScreen();
+            Page = axm_page;
+        } else if(tx_prebtn == 4){
+            //会話ページへ
+            ClearScreen();
+            Page = bxm_page;
+        } else if(tx_prebtn == 5){
+            //入浴ページへ
+            ClearScreen();
+            Page = cxm_page;
+        } else if(tx_prebtn == 6){
+            //仕事ページへ
+            ClearScreen();
+            Page = dxm_page;
+        } else if(tx_prebtn == 7){
+            //その他ページへ
+            ClearScreen();
+            Page = exm_page;
         }
     }
 
-}
+} 
+
+/*void DrawTopScreen3() {
+    //内容画面処理
+    m5::touch_point_t touchPoint;
+    int umes;
+
+    //環境情報
+    //TODO:環境情報を取得し、表示を更新する
+
+    //メッセージ
+    if(M5.Lcd.getTouchRaw(&touchPoint, 1)){
+        if(txm_btn.contains(touchPoint.x, touchPoint.y)){
+            //送るボタン押した
+            if(tx_prebtn != 1) txcancel_btn.drawButton(true);
+            tx_prebtn = 1;
+        }
+        else if(rxm_btn.contains(touchPoint.x, touchPoint.y)){
+            //見るボタン押した
+            if(tx_prebtn != 2) rxm_btn.drawButton(true);
+            tx_prebtn = 2;
+        }
+    } else {
+        //ボタン押してない
+        if(tx_prebtn == 1){
+            //メッセージ送信ページへ
+            ClearScreen();
+            Page = txm_page;
+        } else if(tx_prebtn == 2){
+            //メッセージ受信ページへ
+            ClearScreen();
+            Page = rxm_page;
+        } else if(tx_prebtn == 3){
+            //体調ページへ
+            ClearScreen();
+            Page = axm_page;
+        } else if(tx_prebtn == 4){
+            //会話ページへ
+            ClearScreen();
+            Page = bxm_page;
+        } else if(tx_prebtn == 5){
+            //入浴ページへ
+            ClearScreen();
+            Page = cxm_page;
+        } else if(tx_prebtn == 6){
+            //仕事ページへ
+            ClearScreen();
+            Page = dxm_page;
+        } else if(tx_prebtn == 7){
+            //その他ページへ
+            ClearScreen();
+            Page = exm_page;
+        }
+    }
+    umes = getUnreadMesNum();
+    
+}*/

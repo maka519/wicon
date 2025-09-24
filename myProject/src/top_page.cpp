@@ -100,6 +100,12 @@ void InitScreen() {
     rxprev_btn.initButton(&display, Disw/4, 750, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "前へ", 2, 2);
     rxnext_btn.initButton(&display, Disw-(Disw/4), 750, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "次へ", 2, 2);
 
+    //受信メッセージ返信ページ
+    rxm_res1.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "わかりました", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
+    rxm_res2.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "返信１", 2, 2);
+    rxm_res3.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "返信２", 2, 2);
+    rxm_res4.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "返信３", 2, 2);
+    rxm_res_cancel_btn.initButton(&display, Disw/4, 900, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
 
     /*
     //テスト

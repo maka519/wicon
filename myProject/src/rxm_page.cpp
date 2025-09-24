@@ -83,8 +83,9 @@ void DrawRxmScreen2() {
             ClearScreen();
             Page = top_page;
         } else if(rx_prebtn == 2){
-            //Todo：返信処理
-            
+            //返信処理
+            ClearScreen();
+            Page = rxm_page_res1;
         } else if(rx_prebtn == 3){
             //次へ処理
             sel_rcv++;

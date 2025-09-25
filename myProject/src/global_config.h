@@ -87,41 +87,38 @@ extern LGFX_Button txb;
 extern LGFX_Button txc;
 extern LGFX_Button txd;
 extern LGFX_Button txe;
-extern LGFX_Button txexec_btn;
 extern LGFX_Button txcancel_btn;
 
 //axm_page.cpp
 extern LGFX_Button axa;
 extern LGFX_Button axb;
 extern LGFX_Button axc;
-extern LGFX_Button axexec_btn;
 extern LGFX_Button axcancel_btn;
 
 //bxm_page.cpp
 extern LGFX_Button bxa;
 extern LGFX_Button bxb;
 extern LGFX_Button bxc;
-extern LGFX_Button bxexec_btn;
 extern LGFX_Button bxcancel_btn;
 
 //cxm_page.cpp
 extern LGFX_Button cxa;
 //extern LGFX_Button cxb;
 //extern LGFX_Button cxc;
-extern LGFX_Button cxexec_btn;
 extern LGFX_Button cxcancel_btn;
 
+//
 extern LGFX_Button rx_res_1;
 extern LGFX_Button rx_res_2;
 extern LGFX_Button rx_res_3;
 extern LGFX_Button rx_res_4;
 extern LGFX_Button rx_rescancel_btn;
+
 //dxm_page.cpp
 extern LGFX_Button dxa;
 extern LGFX_Button dxb;
 extern LGFX_Button dxc;
 extern LGFX_Button dxd;
-extern LGFX_Button dxexec_btn;
 extern LGFX_Button dxcancel_btn;
 
 //exm_page.cpp
@@ -130,7 +127,6 @@ extern LGFX_Button exb;
 extern LGFX_Button exc;
 extern LGFX_Button exd;
 extern LGFX_Button exe;
-extern LGFX_Button exexec_btn;
 extern LGFX_Button excancel_btn;
 
 //rxm_page.cpp

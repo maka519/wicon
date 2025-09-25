@@ -8,7 +8,6 @@
 LGFX_Button cxa;
 //LGFX_Button cxb;
 //LGFX_Button cxc;
-LGFX_Button cxexec_btn;
 LGFX_Button cxcancel_btn;
 
 int cx_prebtn = -1;
@@ -24,8 +23,6 @@ void DrawCxmScreen() {
     //cxb.drawButton();
     //cxc.drawButton();
     cxcancel_btn.drawButton();
-    cxexec_btn.drawButton();
-
     //変数初期化
     cx_prebtn = -1;
 }
@@ -43,11 +40,6 @@ void DrawCxmScreen2() {
             //戻るボタン押した
             if(cx_prebtn != 1) cxcancel_btn.drawButton(true);
             cx_prebtn = 1;
-        }
-        else if(cxexec_btn.contains(touchPoint.x, touchPoint.y)){
-            //送るボタン押した
-            if(cx_prebtn != 2) cxexec_btn.drawButton(true);
-            cx_prebtn = 2;
         }
     } else {
         //ボタン押してない

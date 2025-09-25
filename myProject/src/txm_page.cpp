@@ -10,7 +10,6 @@ LGFX_Button txb;//会話
 LGFX_Button txc;//入浴
 LGFX_Button txd;//仕事
 LGFX_Button txe;//その他
-LGFX_Button txexec_btn;//送る
 LGFX_Button txcancel_btn;//戻る
 
 int tx_prebtn = -1;
@@ -28,7 +27,6 @@ void DrawTxmScreen() {
     txd.drawButton();//仕事
     txe.drawButton();//その他
     txcancel_btn.drawButton();//戻る
-    txexec_btn.drawButton();//送る
 
     //変数初期化
     tx_prebtn = -1;
@@ -47,11 +45,6 @@ void DrawTxmScreen2() {
             //戻るボタン押した
             if(tx_prebtn != 1) txcancel_btn.drawButton(true);
             tx_prebtn = 1;
-        }
-        else if(txexec_btn.contains(touchPoint.x, touchPoint.y)){
-            //送るボタン押した
-            if(tx_prebtn != 2) txexec_btn.drawButton(true);
-            tx_prebtn = 2;
         }
         else if(txa.contains(touchPoint.x, touchPoint.y)){
             //体調ボタン押した
@@ -114,59 +107,3 @@ void DrawTxmScreen2() {
     }
 
 } 
-
-/*void DrawTopScreen3() {
-    //内容画面処理
-    m5::touch_point_t touchPoint;
-    int umes;
-
-    //環境情報
-    //TODO:環境情報を取得し、表示を更新する
-
-    //メッセージ
-    if(M5.Lcd.getTouchRaw(&touchPoint, 1)){
-        if(txm_btn.contains(touchPoint.x, touchPoint.y)){
-            //送るボタン押した
-            if(tx_prebtn != 1) txcancel_btn.drawButton(true);
-            tx_prebtn = 1;
-        }
-        else if(rxm_btn.contains(touchPoint.x, touchPoint.y)){
-            //見るボタン押した
-            if(tx_prebtn != 2) rxm_btn.drawButton(true);
-            tx_prebtn = 2;
-        }
-    } else {
-        //ボタン押してない
-        if(tx_prebtn == 1){
-            //メッセージ送信ページへ
-            ClearScreen();
-            Page = txm_page;
-        } else if(tx_prebtn == 2){
-            //メッセージ受信ページへ
-            ClearScreen();
-            Page = rxm_page;
-        } else if(tx_prebtn == 3){
-            //体調ページへ
-            ClearScreen();
-            Page = axm_page;
-        } else if(tx_prebtn == 4){
-            //会話ページへ
-            ClearScreen();
-            Page = bxm_page;
-        } else if(tx_prebtn == 5){
-            //入浴ページへ
-            ClearScreen();
-            Page = cxm_page;
-        } else if(tx_prebtn == 6){
-            //仕事ページへ
-            ClearScreen();
-            Page = dxm_page;
-        } else if(tx_prebtn == 7){
-            //その他ページへ
-            ClearScreen();
-            Page = exm_page;
-        }
-    }
-    umes = getUnreadMesNum();
-    
-}*/

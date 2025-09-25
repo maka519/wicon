@@ -9,12 +9,11 @@ LGFX_Button dxa;
 LGFX_Button dxb;
 LGFX_Button dxc;
 LGFX_Button dxd;
-LGFX_Button dxexec_btn;
 LGFX_Button dxcancel_btn;
 
 int dx_prebtn = -1;
 
-//体調ページ描画
+//仕事ページ描画
 void DrawDxmScreen() {
     //テキスト    
     display.setCursor(3, 150);
@@ -26,7 +25,6 @@ void DrawDxmScreen() {
     dxc.drawButton();
     dxd.drawButton();
     dxcancel_btn.drawButton();
-    dxexec_btn.drawButton();
 
     //変数初期化
     dx_prebtn = -1;
@@ -45,11 +43,6 @@ void DrawDxmScreen2() {
             //戻るボタン押した
             if(dx_prebtn != 1) dxcancel_btn.drawButton(true);
             dx_prebtn = 1;
-        }
-        else if(dxexec_btn.contains(touchPoint.x, touchPoint.y)){
-            //送るボタン押した
-            if(dx_prebtn != 2) dxexec_btn.drawButton(true);
-            dx_prebtn = 2;
         }
     } else {
         //ボタン押してない

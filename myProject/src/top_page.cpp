@@ -66,7 +66,7 @@ void InitScreen() {
     //会話ページ
     bxa.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "元気ですか", 2, 2);//(図形の場所x軸、y軸、　図形の形横幅、　縦幅)
     bxb.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "一緒に通院したい", 2, 2);
-    bxc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "買い物に行きたい", 2, 2);
+    bxc.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "買い物", 2, 2);
     bxcancel_btn.initButton(&display, Disw/4, 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
     bxexec_btn.initButton(&display, Disw-(Disw/4), 800, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
 

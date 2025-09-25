@@ -26,6 +26,7 @@
 #define cxm_page    8   //入浴メッセージ表示ページ
 #define dxm_page    9   //仕事メッセージ表示ページ
 #define exm_page    10   //その他メッセージ表示ページ
+#define rxm_page_res1    11   //受信メッセージの返信（お試し）
 
 //＊＊＊＊構造体定義＊＊＊＊
 //受信メッセージバッファ
@@ -110,6 +111,11 @@ extern LGFX_Button cxa;
 extern LGFX_Button cxexec_btn;
 extern LGFX_Button cxcancel_btn;
 
+extern LGFX_Button rx_res_1;
+extern LGFX_Button rx_res_2;
+extern LGFX_Button rx_res_3;
+extern LGFX_Button rx_res_4;
+extern LGFX_Button rx_rescancel_btn;
 //dxm_page.cpp
 extern LGFX_Button dxa;
 extern LGFX_Button dxb;
@@ -132,6 +138,13 @@ extern LGFX_Button rxrep_btn;
 extern LGFX_Button rxnext_btn;
 extern LGFX_Button rxprev_btn;
 extern LGFX_Button rxcancel_btn;
+
+//rxm_page_res1.cpp
+extern LGFX_Button rxm_res1;
+extern LGFX_Button rxm_res2;
+extern LGFX_Button rxm_res3;
+extern LGFX_Button rxm_res4;
+extern LGFX_Button rxm_res_cancel_btn;
 
 //＊＊＊＊グローバル関数宣言＊＊＊＊
 //comm.cpp
@@ -205,3 +218,7 @@ extern void DrawDxmScreen2();
 //exm_page.cpp
 extern void DrawExmScreen();
 extern void DrawExmScreen2();
+
+//rxm_page_res1.cpp
+extern void Drawrxm_res1Screen();
+extern void Drawrxm_res1Screen2();

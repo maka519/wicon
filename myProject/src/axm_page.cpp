@@ -1,4 +1,4 @@
- //体調ページ
+//体調ページ
 #include <M5Unified.h>
 #include <Arduino.h>
 #include <M5GFX.h>

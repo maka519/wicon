@@ -47,6 +47,7 @@ void loop() {
       case cxm_page: DrawCxmScreen(); break;
       case dxm_page: DrawDxmScreen(); break;
       case exm_page: DrawExmScreen(); break;
+      case rxm_page_res1: Drawrxm_res1Screen(); break;
 
     }
     OldPage = Page;
@@ -64,6 +65,7 @@ void loop() {
       case cxm_page: DrawCxmScreen2(); break;
       case dxm_page: DrawDxmScreen2(); break;
       case exm_page: DrawExmScreen2(); break;
+      case rxm_page_res1: Drawrxm_res1Screen2(); break;
 
     }  
 

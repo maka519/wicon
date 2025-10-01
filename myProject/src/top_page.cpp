@@ -193,8 +193,8 @@ void DrawTopScreen() {
 
     //テキスト
     //環境情報
-    display.setCursor(5,112);
-    display.print("環境情報");
+    //display.setCursor(5,112);
+    //display.print("環境情報");
 
     //メッセージ
     display.setCursor(5,422);

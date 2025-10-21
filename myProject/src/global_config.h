@@ -27,6 +27,8 @@
 #define dxm_page    9   //仕事メッセージ表示ページ
 #define exm_page    10   //その他メッセージ表示ページ
 #define rxm_page_res1    11   //受信メッセージの返信（お試し）
+#define bath_page    12   //おふろページ
+#define bath_now_page    13   //おふろ中ページ
 
 //＊＊＊＊構造体定義＊＊＊＊
 //受信メッセージバッファ
@@ -74,6 +76,7 @@ extern int32_t Dish;    //スクリーン高さ
 extern M5GFX display;
 extern LGFX_Button txm_btn;
 extern LGFX_Button rxm_btn;
+extern LGFX_Button bath_btn;
 
 //SOS_page.cpp
 extern unsigned long SOScnt;     //SOSボタン押下カウンタ
@@ -141,6 +144,13 @@ extern LGFX_Button rxm_res2;
 extern LGFX_Button rxm_res3;
 extern LGFX_Button rxm_res4;
 extern LGFX_Button rxm_res_cancel_btn;
+
+//bath_page.cpp
+extern LGFX_Button take_a_bath;
+extern LGFX_Button bath_cancel_btn;
+
+//bath_now_page.cpp
+extern LGFX_Button finish_bath;
 
 //＊＊＊＊グローバル関数宣言＊＊＊＊
 //comm.cpp
@@ -218,3 +228,11 @@ extern void DrawExmScreen2();
 //rxm_page_res1.cpp
 extern void Drawrxm_res1Screen();
 extern void Drawrxm_res1Screen2();
+
+//bath_page.cpp
+extern void DrawbathScreen();
+extern void DrawbathScreen2();
+
+//bath_now_page.cpp
+extern void Drawbath_nowScreen();
+extern void Drawbath_nowScreen2();

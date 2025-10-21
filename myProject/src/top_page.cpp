@@ -251,7 +251,7 @@ void DrawTopScreen2() {
     temp = sht3x.cTemp;
     humi = sht3x.humidity;
     int wbgt = lookupWBGT(temp, humi);
-    int pirValue = digitalRead(32);
+    int pirValue = digitalRead(19);
 
     Serial.printf("temp:%6.2f C\n", temp);
     Serial.printf("humi:%6.2f %%\n", humi);

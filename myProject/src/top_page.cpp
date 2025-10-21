@@ -13,6 +13,8 @@ M5GFX display;
 
 LGFX_Button txm_btn;
 LGFX_Button rxm_btn;
+LGFX_Button bath_btn;
+
 
 int top_prebtn = -1;
 int pre_umes;
@@ -89,6 +91,8 @@ void InitScreen() {
     //topページ
     txm_btn.initButton(&display, Disw/2, 525, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
     rxm_btn.initButton(&display, Disw/2, 625, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "見る", 2, 2);
+    bath_btn.initButton(&display, Disw/2, 825, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "お風呂", 2, 2);
+
     if (!sht3x.begin(&Wire, SHT3X_I2C_ADDR, 21, 22, 400000U)) {
    Serial.println("SHT30 not found");
    M5.Display.setCursor(60, 300);
@@ -154,6 +158,13 @@ void InitScreen() {
     rxm_res4.initButton(&display, Disw/2, 550, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "返信３", 2, 2);
     rxm_res_cancel_btn.initButton(&display, Disw/4, 900, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
 
+    //お風呂ページ
+    take_a_bath.initButton(&display, Disw/2, 500, Disw, 540, TFT_BLACK, 0xeeee, TFT_BLACK, "入る", 2, 2);
+    bath_cancel_btn.initButton(&display, Disw/4, 900, Disw/5, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "戻る", 2, 2);
+
+    //お風呂中ページ
+    finish_bath.initButton(&display, Disw/2, 500, Disw, 540, TFT_BLACK, 0xeeee, TFT_BLACK, "", 2, 2);
+
     /*
     //テスト
     display.setCursor(10, 40);
@@ -205,6 +216,7 @@ void DrawTopScreen() {
     //ボタン
     txm_btn.drawButton();
     rxm_btn.drawButton();
+    bath_btn.drawButton();
 
     //変数初期化
     top_prebtn = -1;
@@ -307,6 +319,13 @@ void DrawTopScreen2() {
             if(top_prebtn != 2) rxm_btn.drawButton(true);
             top_prebtn = 2;
         }
+        //お風呂
+        else if(bath_btn.contains(touchPoint.x, touchPoint.y)){
+            //お風呂ボタンを押した
+            if(top_prebtn != 12) bath_btn.drawButton(true);
+                top_prebtn = 12;
+
+        }
     } else {
         //ボタン押してない
         if(top_prebtn == 1){
@@ -317,6 +336,10 @@ void DrawTopScreen2() {
             //メッセージ受信ページへ
             ClearScreen();
             Page = rxm_page;
+        } else if(top_prebtn == 12){
+            //お風呂ページへ
+            ClearScreen();
+            Page = bath_page;
         }
     }
     umes = getUnreadMesNum();

@@ -23,7 +23,7 @@ void DrawSOSScreen() {
     display.println("ＳＯＳ発信");
     display.setTextSize(2);
     display.setCursor(1, 300);
-    display.println("５秒間ＳＯＳボタンを押し続けて下さい");
+    display.println("2秒間ＳＯＳボタンを押し続けて下さい");
     display.setTextSize(4);
     display.setCursor(100, 400);
     display.print("0");
@@ -162,7 +162,7 @@ bool SOS() {
                     Page = SOS_page;
                     pcnt = 0;
                 }
-                else if(pcnt >= 5){
+                else if(pcnt >= 2){
                     //5秒以上押されたのでSOS処理実施
                     ClearScreen();
                     Page = txSOS_page;

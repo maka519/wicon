@@ -15,7 +15,7 @@ void setup() {
   auto cfg = M5.config();
   M5.begin(cfg);  //M5コアを初期化
   SetMessageFont(); //フォントをメッセージ表示用に設定
-  Serial2.begin(9600, SERIAL_8N1, 25, 32);
+  Serial2.begin(9600, SERIAL_8N1, 25, 32);//RX_PIN, TX_PIN
   M5.Rtc.begin();
 
   InitSD();   //SDカードマウント
@@ -48,6 +48,8 @@ void loop() {
       case dxm_page: DrawDxmScreen(); break;
       case exm_page: DrawExmScreen(); break;
       case rxm_page_res1: Drawrxm_res1Screen(); break;
+      case bath_page: DrawbathScreen(); break;
+      case bath_now_page: Drawbath_nowScreen(); break;
 
     }
     OldPage = Page;
@@ -66,6 +68,8 @@ void loop() {
       case dxm_page: DrawDxmScreen2(); break;
       case exm_page: DrawExmScreen2(); break;
       case rxm_page_res1: Drawrxm_res1Screen2(); break;
+      case bath_page: DrawbathScreen2(); break;
+      case bath_now_page: Drawbath_nowScreen2(); break;
 
     }  
 

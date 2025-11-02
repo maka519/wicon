@@ -11,18 +11,25 @@
 int Page;    //現在表示しているページID
 int OldPage;
 
+unsigned long        kp_sTime;   //キープアライブ周期開始時間
+
 void setup() {
   auto cfg = M5.config();
   M5.begin(cfg);  //M5コアを初期化
   SetMessageFont(); //フォントをメッセージ表示用に設定
-  Serial2.begin(9600, SERIAL_8N1, 25, 32);//RX_PIN, TX_PIN
-  M5.Rtc.begin();
-
+  Serial2.begin(9600, SERIAL_8N1, Port_LoRaRx, Port_LoRaTx);//RX_PIN, TX_PIN  LoRa通信
+  pinMode(PIR_pin, INPUT);  //PIR接続を入力に設定
+  
+  InitEnv();  //環境センサ初期化
   InitSD();   //SDカードマウント
   InitLoRa(); //LoRa通信初期化
   InitData(); //データ初期化
   InitScreen(); //画面初期化
   DrawHeader();  //ヘッダー表示
+
+  updateEnv();  //環境センサデータ更新
+  SendEnv();  //環境情報送信
+  kp_sTime = millis();
 
   //トップページ表示
   Page = top_page;
@@ -79,6 +86,12 @@ void loop() {
   SOS();  //SOS処理
   CheckRxLoRa();  //LoRa受信処理
   DispTime(); //時間表示
-
+  updateEnv();  //環境センサデータ更新
+  
+  if((millis()-kp_sTime) >= KPPeriod){
+      SendEnv();  //環境情報送信
+    kp_sTime = millis();
+  }
+  
   delay(500);
 }

@@ -156,8 +156,20 @@ char* RxLoRa() {
 //事前処理：LoRaTxにヘッダー込みで送信データを入れおく
 void TxLoRa() {
     Serial2.print(LoRaTx);
-    display.println(LoRaTx);
+    //display.println(LoRaTx);
     rflg = 1;
+}
+
+//環境センサ送信
+void SendEnv() {
+    int i;
+    //送信データ生成
+    sprintf(LoRaTx,"%sffff%c%c%sffffb170%1x2%04x%04x%02x%02x",PANID,hop,seq,OWNID,rflg,(int)(humi*100),(int)((temp+100)*100),pirCnt,wbgt);
+    sprintf(LoRaTx,"%s\r\n",LoRaTx);
+    TxLoRa();
+    seq++;
+    if(seq >= 0x7d) seq = 0x2d;
+    pirCnt = 0;
 }
 
 //メッセージ送信

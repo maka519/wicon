@@ -7,12 +7,21 @@
 //このファイルを全てのcppファイルにインクルードしておけば、各ファイル内でグローバル変数、関数、パラメータが使用可能となる。
 
 //＊＊＊＊パラメータ定義＊＊＊＊
+//LoRaシリアルポート
+#define Port_LoRaRx 26  //LoRa通信Rx (PORTA:25, PORTB:26, PORTC:18)
+#define Port_LoRaTx 33  //LoRa通信Tx (PORTA:32, PORTB:33, PORTC:19)
+//PIR信号
+#define PIR_pin 18      //PIR信号　(PORTA:25, PORTB:26, PORTC:18)
+
 //LoRa関係
 //環境に合わせて編集すること
 #define payloadSize 60      //データペイロードサイズ
 #define maxUsers    100     //ユーザ最大数
 #define maxMessages 100     //メッセージ最大数
 #define maxCategories 100   //カテゴリー最大数
+
+#define KPPeriod   600000    //キープアライブ周期[ms] 環境センサ情報をこの周期で送信
+
 //受信バッファ関係
 #define max_rcv 5     //メッセージ保存件数
 //ページID
@@ -47,6 +56,7 @@ struct RcvMesBuff {
 };
 
 
+
 //＊＊＊＊グローバル変数宣言＊＊＊＊
 //main.cpp
 extern int Page;    //現在表示しているページIDs
@@ -58,6 +68,10 @@ extern String OWNID;    //自身のOWNID
 extern String USERS[];   //ユーザID(OWNID),ユーザ名　の文字列を要素とした配列で定義すする
 extern String MESSAGES[];    //メッセージID,メッセージ,カテゴリID　の文字列を要素とした配列で定義する
 extern String CATEGORIES[]; //カテゴリーID,カテゴリー名 の文字列を要素とした配列を定義する
+extern float temp, humi;   //温度、湿度
+extern int pirCnt;       //人感センサカウンタ
+extern int wbgt;          //熱中症危険度
+extern int pirValue;       //人感センサ
 
 //comm.cpp
 extern char  LoRaRx[payloadSize+12], LoRaTx[payloadSize+12];   //LoRa通信データ格納用    
@@ -157,11 +171,13 @@ extern LGFX_Button finish_bath;
 extern void InitLoRa();
 extern char* RxLoRa();
 extern void TxLoRa();
+extern void SendEnv();
 extern void SendMessage(String *toid, int tonum, int mesid, int mesid2, String rpyid, int rpyseq);
 extern bool ReceiveMessage();
 extern void CheckRxLoRa();
 
 //utility.cpp
+extern int lookupWBGT(float temp, float humi);
 extern void InitData();
 extern String getUserName(String userid);
 extern int getMessage(int messageid, String *mstr);
@@ -174,6 +190,8 @@ extern void DispSelTime(m5::rtc_datetime_t stime);
 extern void CheckBattery(bool IsForcedDisplay);
 extern void DisplayFrt(int frt);
 extern m5::rtc_datetime_t UTC2JST(m5::rtc_datetime_t utc_time);
+extern void updateEnv();
+extern void InitEnv();
 
 //SD.cpp
 extern void InitSD();

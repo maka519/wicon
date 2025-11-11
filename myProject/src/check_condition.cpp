@@ -16,6 +16,10 @@ int condition_prebtn = -1;
 
 //内容ページ描画
 void Drawcheck_conditionScreen() {
+
+    ClearScreen();
+    display.display();
+    delay(100);
     //テキスト    
     display.setCursor(3, 150);
     display.print("今の気分は？");
@@ -30,6 +34,8 @@ void Drawcheck_conditionScreen() {
 
     //変数初期化
     condition_prebtn = -1;
+
+    display.display();
 }
 
 void Drawcheck_conditionScreen2() {

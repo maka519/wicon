@@ -62,6 +62,10 @@ void loop() {
     Page = check_condition_page;
   }
 
+  if(M5.BtnB.wasPressed()){
+    Page = check_condition_page;
+  }
+
   //ページ制御
   if(Page != OldPage){
     //ページ切替

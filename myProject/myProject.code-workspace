@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../OneDrive/ドキュメント/GitHub/wicon/myProject"
+		},
+		{
+			"name": "myProject",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "cpp"
+		}
+	}
+}

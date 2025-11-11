@@ -38,6 +38,7 @@
 #define rxm_page_res1    11   //受信メッセージの返信（お試し）
 #define bath_page    12   //おふろページ
 #define bath_now_page    13   //おふろ中ページ
+#define check_condition  14   //体調確認ページ
 
 //＊＊＊＊構造体定義＊＊＊＊
 //受信メッセージバッファ
@@ -166,6 +167,13 @@ extern LGFX_Button bath_cancel_btn;
 //bath_now_page.cpp
 extern LGFX_Button finish_bath;
 
+//check_condition.cpp
+extern LGFX_Button very_good;
+extern LGFX_Button good;
+extern LGFX_Button normal;
+extern LGFX_Button sick;
+extern LGFX_Button very_sick;
+
 //＊＊＊＊グローバル関数宣言＊＊＊＊
 //comm.cpp
 extern void InitLoRa();
@@ -254,3 +262,7 @@ extern void DrawbathScreen2();
 //bath_now_page.cpp
 extern void Drawbath_nowScreen();
 extern void Drawbath_nowScreen2();
+
+//check_condition.cpp
+extern void Drawcheck_conditionScreen();
+extern void Drawcheck_conditionScreen2();

@@ -112,6 +112,13 @@ void InitScreen() {
     //お風呂中ページ
     finish_bath.initButton(&display, Disw/2, 500, Disw, 540, TFT_BLACK, 0xeeee, TFT_BLACK, "", 2, 2);
 
+    //体調確認ページ
+    very_good.initButton(&display, Disw/2, 250, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "", 2, 2);
+    good.initButton(&display, Disw/2, 350, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "元気", 2, 2);
+    normal.initButton(&display, Disw/2, 450, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "普通", 2, 2);
+    sick.initButton(&display, Disw/2, 550, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "", 2, 2);
+    very_sick.initButton(&display, Disw/2, 650, Disw, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "", 2, 2);
+
     /*
     //テスト
     display.setCursor(10, 40);

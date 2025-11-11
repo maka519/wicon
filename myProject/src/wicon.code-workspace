@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "myProject",
+			"path": "../../../../../../lab/wicon/myProject"
+		}
+	],
+	"settings": {}
+}

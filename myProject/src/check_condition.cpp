@@ -47,53 +47,59 @@ void Drawcheck_conditionScreen2() {
             condition_prebtn = 1;
         }*/
         if(very_good.contains(touchPoint.x, touchPoint.y)){
-            //体調ボタン押した
+            
             if(condition_prebtn != 1) very_good.drawButton(true);
             condition_prebtn = 1;
         }
         else if(good.contains(touchPoint.x, touchPoint.y)){
-            //会話ボタン押した
+            
             if(condition_prebtn != 2) good.drawButton(true);
             condition_prebtn = 2;
         }
          else if(normal.contains(touchPoint.x, touchPoint.y)){
-            //入浴ボタン押した
+            
             if(condition_prebtn != 3) normal.drawButton(true);
             condition_prebtn = 3;
         }
         else if(sick.contains(touchPoint.x, touchPoint.y)){
-            //仕事ボタン押した
+            
             if(condition_prebtn != 4) sick.drawButton(true);
             condition_prebtn = 4;
         }  
         else if(very_sick.contains(touchPoint.x, touchPoint.y)){
-            //その他ボタン押した
+            
             if(condition_prebtn != 5) very_sick.drawButton(true);
             condition_prebtn = 5;
         }   
     } else {
         //ボタン押してない
         if(condition_prebtn == 1){
+            today_condition_check  = true;
+            SendCondition(1);
             //トップページへ
             ClearScreen();
             Page = top_page;
         } else if(condition_prebtn == 2){
-            
+            today_condition_check  = true;
+            SendCondition(2);
             //トップページへ
             ClearScreen();
             Page = top_page;
         } else if(condition_prebtn == 3){
-            //体調ページへ
+            today_condition_check  = true;
+            SendCondition(3);
             ClearScreen();
-            Page = axm_page;
+            Page = top_page;
         } else if(condition_prebtn == 4){
-            //会話ページへ
+            today_condition_check  = true;
+            SendCondition(4);
             ClearScreen();
-            Page = bxm_page;
+            Page = top_page;
         } else if(condition_prebtn == 5){
-            //入浴ページへ
+            today_condition_check  = true;
+            SendCondition(5);
             ClearScreen();
-            Page = cxm_page;
+            Page = top_page;
         }
     }
 

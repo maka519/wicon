@@ -38,7 +38,7 @@
 #define rxm_page_res1    11   //受信メッセージの返信（お試し）
 #define bath_page    12   //おふろページ
 #define bath_now_page    13   //おふろ中ページ
-#define check_condition  14   //体調確認ページ
+#define check_condition_page  14   //体調確認ページ
 
 //＊＊＊＊構造体定義＊＊＊＊
 //受信メッセージバッファ
@@ -173,6 +173,7 @@ extern LGFX_Button good;
 extern LGFX_Button normal;
 extern LGFX_Button sick;
 extern LGFX_Button very_sick;
+extern bool today_condition_check;
 
 //＊＊＊＊グローバル関数宣言＊＊＊＊
 //comm.cpp
@@ -180,6 +181,8 @@ extern void InitLoRa();
 extern char* RxLoRa();
 extern void TxLoRa();
 extern void SendEnv();
+extern void SendSOS(int sos);
+extern void SendCondition(int condition);
 extern void SendMessage(String *toid, int tonum, int mesid, int mesid2, String rpyid, int rpyseq);
 extern bool ReceiveMessage();
 extern void CheckRxLoRa();

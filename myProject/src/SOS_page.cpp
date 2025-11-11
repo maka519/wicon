@@ -14,6 +14,7 @@ int dflg = 1;
 int pcnt = 0;
 int SOSmode = -1;
 int pre_SOSmode;
+unsigned long SOSperiod = 0;
 
 //SOSボタン押下ページ描画
 void DrawSOSScreen() {
@@ -122,26 +123,31 @@ bool SOS() {
             //タッチしてない
             if(SOSmode == 1){
                 //SOSキャンセル
-                //todo SOSキャンセルメッセージをブロードキャストで送信
-
+                //SOSキャンセルメッセージをブロードキャストで送信
+                SendSOS(2);
                 //トップページに戻る
                 SOScnt = 0;
+                SOSperiod = 0;
                 DrawHeader();
                 ClearScreen();
                 Page = top_page;
             } else if(SOSmode == 2){
                 //SOS終了
-                //todo SOS終了メッセージをブロードキャストで送信
-
+                //SOS終了メッセージをブロードキャストで送信
+                SendSOS(3);
                 //トップページに戻る
                 SOScnt = 0;
+                SOSperiod = 0;
                 DrawHeader();
                 ClearScreen();
                 Page = top_page;
             } else {
                 //SOS発信中
                 //todo SOS信号メッセージをブロードキャストで送信（5分周期）
-
+                if((SOSperiod == 0)||(millis()-SOSperiod > 60000*5)){
+                    SendSOS(0);
+                    SOSperiod = millis();
+                }
             }
             display.setTextColor(TFT_BLACK, TFT_WHITE);
             return false;         

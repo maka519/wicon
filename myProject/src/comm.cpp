@@ -172,6 +172,28 @@ void SendEnv() {
     pirCnt = 0;
 }
 
+//SOS送信!!!!
+void SendSOS(int sos) {//1とてもいい,2いい,3普通,4あまりよくない,5よくない
+    int i;
+    //送信データ生成
+    sprintf(LoRaTx,"%sffff%c%c%sffffb170%1x3%01x",PANID,hop,seq,OWNID,rflg,sos);
+    sprintf(LoRaTx,"%s\r\n",LoRaTx);
+    TxLoRa();
+    seq++;
+    if(seq >= 0x7d) seq = 0x2d;
+}
+
+//体調送信!!!!
+void SendCondition(int condition) {
+    int i;
+    //送信データ生成
+    sprintf(LoRaTx,"%sffff%c%c%sffffb170%1x4%01x",PANID,hop,seq,OWNID,rflg,condition);
+    sprintf(LoRaTx,"%s\r\n",LoRaTx);
+    TxLoRa();
+    seq++;
+    if(seq >= 0x7d) seq = 0x2d;
+}
+
 //メッセージ送信
 //toid: 宛先(OWNID, ffffはブロードキャスト)配列　
 //tonum: 宛先配列要素数

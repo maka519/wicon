@@ -11,6 +11,9 @@
 int Page;    //現在表示しているページID
 int OldPage;
 
+int lastday_condition_check = -1;
+bool today_condition_check = false;
+
 unsigned long        kp_sTime;   //キープアライブ周期開始時間
 
 void setup() {
@@ -31,6 +34,11 @@ void setup() {
   SendEnv();  //環境情報送信
   kp_sTime = millis();
 
+// 日付チェック変数を初期化
+  m5::rtc_datetime_t dt_now;
+  M5.Rtc.getDateTime(&dt_now); // LoRaで設定された現在時刻を取得
+  lastday_condition_check = dt_now.date.date;
+
   //トップページ表示
   Page = top_page;
   OldPage = -1;
@@ -40,6 +48,20 @@ void loop() {
   
   M5.update();
   
+  m5::rtc_datetime_t dt; 
+  M5.Rtc.getDateTime(&dt);
+
+//日付が変わったらリセット
+  if (dt.date.date != lastday_condition_check) {
+    today_condition_check = false; 
+    lastday_condition_check = dt.date.date;
+  }
+
+  if ( (dt.time.hours >= 6) && (!today_condition_check) && (Page != check_condition_page) ) 
+  {
+    Page = check_condition_page;
+  }
+
   //ページ制御
   if(Page != OldPage){
     //ページ切替
@@ -57,6 +79,7 @@ void loop() {
       case rxm_page_res1: Drawrxm_res1Screen(); break;
       case bath_page: DrawbathScreen(); break;
       case bath_now_page: Drawbath_nowScreen(); break;
+      case check_condition_page: Drawcheck_conditionScreen(); break;
 
     }
     OldPage = Page;
@@ -77,6 +100,7 @@ void loop() {
       case rxm_page_res1: Drawrxm_res1Screen2(); break;
       case bath_page: DrawbathScreen2(); break;
       case bath_now_page: Drawbath_nowScreen2(); break;
+      case check_condition_page: Drawcheck_conditionScreen2(); break;
 
     }  
 

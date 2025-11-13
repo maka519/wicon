@@ -43,9 +43,9 @@ void InitScreen() {
     //ヘッダー
     sos_btn.initButton(&display, 5+Disw/4, 50, Disw/2, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "SOS", 2, 2);
     //topページ
-    txm_btn.initButton(&display, Disw/2, 525, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "送る", 2, 2);
-    rxm_btn.initButton(&display, Disw/2, 625, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "見る", 2, 2);
-    bath_btn.initButton(&display, Disw/2, 825, Disw-20, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "お風呂", 2, 2);
+    txm_btn.initButton(&display, Disw/2, 525, Disw-20, 90, TFT_BLACK, 0x8888, TFT_BLACK, "送る", 2, 2);
+    rxm_btn.initButton(&display, Disw/2, 625, Disw-20, 90, TFT_BLACK, 0x8888, TFT_BLACK, "見る", 2, 2);
+    bath_btn.initButton(&display, Disw/2, 825, Disw-20, 90, TFT_BLACK, 0x8888, TFT_BLACK, "お風呂", 2, 2);
 
     //SOSページ
     sos_cancel_btn.initButton(&display, 5+Disw/4, 400, Disw/3, 90, TFT_BLACK, 0xeeee, TFT_BLACK, "間違い", 2, 2);
@@ -253,7 +253,7 @@ void DrawTopScreen2() {
         display.setCursor(5, 262);
         display.print("感知しました　");
     }
-    
+    /*
     //メッセージ
     if(M5.Lcd.getTouchRaw(&touchPoint, 1)){
         if(txm_btn.contains(touchPoint.x, touchPoint.y)){
@@ -288,7 +288,8 @@ void DrawTopScreen2() {
             ClearScreen();
             Page = bath_page;
         }
-    }
+        
+    }*/
     umes = getUnreadMesNum();
     if(umes != pre_umes){
         display.setCursor(Disw-250,680);

@@ -173,6 +173,8 @@ extern LGFX_Button good;
 extern LGFX_Button normal;
 extern LGFX_Button sick;
 extern LGFX_Button very_sick;
+extern LGFX_Button dizzy;
+extern LGFX_Button ather;
 extern bool today_condition_check;
 
 //＊＊＊＊グローバル関数宣言＊＊＊＊

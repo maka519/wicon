@@ -222,7 +222,7 @@ m5::rtc_datetime_t UTC2JST(m5::rtc_datetime_t utc_time) {
 
 //熱中症危険度取得
 int calcWBGT(float temp, float humi) {
-  double wbgt_cal = 0.735*temp+0.0374*humi+0.00292+temp*humi-4.064;
+  double wbgt_cal = 0.735*temp+0.0374*humi+0.00292*temp*humi-4.064;
   return (int)wbgt_cal;
 }
 
